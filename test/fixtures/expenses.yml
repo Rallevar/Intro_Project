@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ward: one
+  vendor: one
+  account: one
+  entry_date: MyString
+  description: MyText
+  account: MyString
+  amount: 9.99
+  department: MyString
+
+two:
+  ward: two
+  vendor: two
+  account: two
+  entry_date: MyString
+  description: MyText
+  account: MyString
+  amount: 9.99
+  department: MyString

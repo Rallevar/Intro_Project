@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ward_name: MyString
+  council_member: MyString
+  total_population: 1
+  median_age: 1
+
+two:
+  ward_name: MyString
+  council_member: MyString
+  total_population: 1
+  median_age: 1
