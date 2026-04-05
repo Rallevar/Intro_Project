@@ -1,0 +1,15 @@
+<h1>Expense Transaction #<%= @expense.id %></h1>
+
+<ul>
+  <li><strong>Transaction ID:</strong> <%= @expense.id %></li>
+  <li><strong>Entry Date:</strong> <%= @expense.entry_date %></li>
+  <li><strong>Description:</strong> <%= @expense.description %></li>
+  <li><strong>Amount:</strong>$<%= @expense.amount %></li>
+  <li><strong>Department:</strong> <%= @expense.department %></li>
+  <li><strong>Ward:</strong> <%= @expense.ward.ward_name %></li>
+  <li><strong>Council Member:</strong> <%= @expense.ward.council_member %></li>
+  <li><strong>Vendor:</strong> <%= @expense.vendor.vendor_name %></li>
+  <li><strong>Account:</strong> <%= @expense.account.account_name %></li>
+</ul>
+
+<%= link_to 'Back to Expenses', expenses_path %>

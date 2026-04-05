@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "about/index"
   get "accounts/index"
-  get "expenses/index"
+  resources :expenses, only: [:index, :show]
   get "vendors/index"
   get "wards/index"
   get "main/home"

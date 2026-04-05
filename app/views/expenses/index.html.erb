@@ -2,16 +2,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to 'Transaction ID', expenses_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
-      <th><%= link_to 'Amount', expenses_index_path(sort: 'amount', direction: toggle_direction('amount')) %></th>
-      <th><%= link_to 'Description', expenses_index_path(sort: 'description', direction: toggle_direction('description')) %></th>
+      <th><%= link_to 'Transaction ID', expenses_path(sort: 'id', direction: toggle_direction('id')) %></th>
+      <th><%= link_to 'Amount', expenses_path(sort: 'amount', direction: toggle_direction('amount')) %></th>
+      <th><%= link_to 'Description', expenses_path(sort: 'description', direction: toggle_direction('description')) %></th>
     </tr>
   </thead>
   <tbody>
     <% @expenses.each do |expense| %>
       <tr>
-        <td><%= expense.id %></td>
-        <td><%= expense.amount %></td>
+        <td><%= link_to expense.id, expense_path(expense) %></td>
+        <td>$<%= expense.amount %></td>
         <td><%= expense.description %></td>
       </tr>
     <% end %>

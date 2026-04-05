@@ -14,4 +14,8 @@ class ExpensesController < ApplicationController
     # Sort the expenses using the column and direction
     @expenses = Expense.order(sort_by + ' ' + sort_dir)
   end
+
+  def show
+    @expense = Expense.includes(:ward, :vendor, :account).find(params[:id])
+  end
 end

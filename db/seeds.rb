@@ -14,7 +14,7 @@ require "faker"
 csv_path = Rails.root.join("db", "Council_Member_Expenses.csv")
 csv_data = File.read(csv_path)
 
-puts "Seeding database.  This will take a minute..."
+puts "Seeding database.  Please wait."
 puts "Clearing database"
 
 Expense.destroy_all
@@ -26,7 +26,7 @@ puts "Database cleared. Loading data from csv."
 data_source = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
 
 puts "Creating Wards from csv data."
-data_source.each do |entry|
+data_source.first(400).each do |entry|
   Ward.find_or_create_by!(ward_name: entry["Ward/Office"]) do |ward|
     ward.council_member = entry["Council Member"]
     ward.total_population = Faker::Number.between(from: 5_000, to: 50_000)
@@ -35,7 +35,7 @@ data_source.each do |entry|
 end
 
 puts "Creating Vendors and Accounts from csv data."
-data_source.each do |row|
+data_source.first(400).each do |row|
   Vendor.find_or_create_by(vendor_name: row["Vendor"])
   Account.find_or_create_by(account_name: row["Account"])
 end
@@ -48,7 +48,7 @@ data_source.first(400).each do |row|
     account: Account.find_by(account_name: row["Account"]),
     entry_date: Date.parse(row["Journal Date"]),
     description: row["Description"],
-    amount: row["Amount"],
+    amount: row["Amount"].delete("$").to_f,
     department: row["Department"]
   )
 end
