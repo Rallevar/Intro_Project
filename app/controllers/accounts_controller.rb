@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
    end
 
     # Sort the accounts using the column and direction
-    @accounts = Account.order(sort_by + ' ' + sort_dir)
+    @accounts = Account.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
   end
 
   def show

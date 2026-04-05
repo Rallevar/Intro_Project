@@ -12,7 +12,7 @@ class WardsController < ApplicationController
     end
 
     # Sort the wards using the column and direction
-    @wards = Ward.order(sort_by + ' ' + sort_dir)
+    @wards = Ward.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
   end
 
   def show

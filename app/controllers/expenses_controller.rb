@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
     end
 
     # Sort the expenses using the column and direction
-    @expenses = Expense.order(sort_by + ' ' + sort_dir)
+    @expenses = Expense.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
   end
 
   def show

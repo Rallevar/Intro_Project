@@ -11,7 +11,7 @@ class VendorsController < ApplicationController
     end
 
     # Sort the vendors using the column and direction
-    @vendors = Vendor.order(sort_by + ' ' + sort_dir)
+    @vendors = Vendor.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
   end
 
   def show
