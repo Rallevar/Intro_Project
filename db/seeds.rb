@@ -41,14 +41,14 @@ data_source.each do |row|
 end
 
 puts "Creating Expenses from csv data."
-data_source.first(400) do |row|
+data_source.first(400).each do |row|
   Expense.create!(
     ward: Ward.find_by(ward_name: row["Ward/Office"]),
     vendor: Vendor.find_by(vendor_name: row["Vendor"]),
     account: Account.find_by(account_name: row["Account"]),
     entry_date: Date.parse(row["Journal Date"]),
     description: row["Description"],
-    amount: row["Amount"].delete("$,").to_f,
+    amount: row["Amount"],
     department: row["Department"]
   )
 end

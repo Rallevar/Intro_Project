@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "expenses/index"
   get "vendors/index"
   get "wards/index"
-  get "pages/home"
+  get "main/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "pages#home"
+  root "main#home"
 end
