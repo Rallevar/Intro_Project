@@ -3,5 +3,5 @@ class Ward < ApplicationRecord
 
    # Validations
   validates :ward_name, presence: true
-  validates :population_total, numericality: { greater_than_or_equal_to: 0 }
+  validates :total_population, numericality: { greater_than_or_equal_to: 0 }
 end

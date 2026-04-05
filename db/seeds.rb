@@ -14,27 +14,34 @@ require "faker"
 csv_path = Rails.root.join("db", "Council_Member_Expenses.csv")
 csv_data = File.read(csv_path)
 
+puts "Seeding database.  This will take a minute..."
+puts "Clearing database"
+
 Expense.destroy_all
 Ward.destroy_all
 Vendor.destroy_all
 Account.destroy_all
 
-data_source = CSV.parse(csv_data, headers: true)
+puts "Database cleared. Loading data from csv."
+data_source = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
 
+puts "Creating Wards from csv data."
 data_source.each do |entry|
   Ward.find_or_create_by!(ward_name: entry["Ward/Office"]) do |ward|
     ward.council_member = entry["Council Member"]
     ward.total_population = Faker::Number.between(from: 5_000, to: 50_000)
-    ward.median_age = Faker::Number.decimal(l_digits: 2, r_digits: 1).to_f
+    ward.median_age = Faker::Number.decimal(l_digits: 2)
   end
 end
 
+puts "Creating Vendors and Accounts from csv data."
 data_source.each do |row|
-  Vendor.find_or_create_by!(vendor_name: row["Vendor"])
-  Account.find_or_create_by!(account_name: row["Account"])
+  Vendor.find_or_create_by(vendor_name: row["Vendor"])
+  Account.find_or_create_by(account_name: row["Account"])
 end
 
-data_source.each do |row|
+puts "Creating Expenses from csv data."
+data_source.first(400) do |row|
   Expense.create!(
     ward: Ward.find_by(ward_name: row["Ward/Office"]),
     vendor: Vendor.find_by(vendor_name: row["Vendor"]),
@@ -45,3 +52,5 @@ data_source.each do |row|
     department: row["Department"]
   )
 end
+
+puts "Thank you for waiting. Database has been seeded."
