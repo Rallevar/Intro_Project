@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "about/index"
+  get "accounts/index"
+  get "expenses/index"
+  get "vendors/index"
+  get "wards/index"
   get "pages/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

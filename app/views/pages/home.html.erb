@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <h1>Council Member Expenses Dashboard</h1>
+  <p>Welcome! Choose what you'd like to view:</p>
+
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Wards</h5>
+          <p class="card-text">View all wards and their data</p>
+          <%= link_to "View Wards", wards_index_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Vendors</h5>
+          <p class="card-text">View all vendors</p>
+          <%= link_to "View Vendors", vendors_index_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Expenses</h5>
+          <p class="card-text">View all expenses</p>
+          <%= link_to "View Expenses", expenses_index_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Accounts</h5>
+          <p class="card-text">View all accounts</p>
+          <%= link_to "View Accounts", accounts_index_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
