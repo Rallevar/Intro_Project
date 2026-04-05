@@ -4,14 +4,14 @@
   <thead>
     <tr>
       <th><%= link_to 'ID', accounts_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
-      <th><%= link_to 'Ward Name', accounts_index_path(sort: 'ward_name', direction: toggle_direction('ward_name')) %></th>
+      <th><%= link_to 'Account Name', accounts_index_path(sort: 'account_name', direction: toggle_direction('account_name')) %></th>
     </tr>
   </thead>
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.id %></td>
-        <td><%= account.ward_name %></td>
+        <td><%= account.account_name %></td>
       </tr>
     <% end %>
   </tbody>

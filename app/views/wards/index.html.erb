@@ -5,13 +5,28 @@
     <tr>
       <th><%= link_to 'ID', wards_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
       <th><%= link_to 'Ward Name', wards_index_path(sort: 'ward_name', direction: toggle_direction('ward_name')) %></th>
+      <th><%= link_to 'Median Age', wards_index_path(sort: 'median_age', direction: toggle_direction('median_age')) %></th>
+      <th><%= link_to 'Total Population', wards_index_path(sort: 'total_population', direction: toggle_direction('total_population')) %></th>
+      <th>Population Tier</th>
     </tr>
   </thead>
+
   <tbody>
     <% @wards.each do |ward| %>
       <tr>
         <td><%= ward.id %></td>
         <td><%= ward.ward_name %></td>
+        <td><%= ward.median_age %></td>
+        <td><%= ward.total_population %></td>
+        <td>
+          <% if ward.total_population.to_i > 30000 %>
+            <span class="badge bg-danger">Large</span>
+          <% elsif ward.total_population.to_i > 15000 %>
+            <span class="badge bg-warning text-dark">Medium</span>
+          <% else %>
+            <span class="badge bg-success">Small</span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
