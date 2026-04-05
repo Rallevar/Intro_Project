@@ -1,0 +1,14 @@
+<h1><%= @vendor.vendor_name %></h1>
+
+<h2>Accounts Billed to This Vendor</h2>
+<% if @vendor.accounts.any? %>
+  <ul>
+    <% @vendor.accounts.distinct.each do |account| %>
+      <li><%= link_to account.account_name, account_path(account) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No accounts found for this vendor.</p>
+<% end %>
+
+<%= link_to 'Back to Vendors', vendors_path %>

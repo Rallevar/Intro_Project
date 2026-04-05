@@ -14,4 +14,8 @@ class AccountsController < ApplicationController
     # Sort the accounts using the column and direction
     @accounts = Account.order(sort_by + ' ' + sort_dir)
   end
+
+  def show
+    @account = Account.includes(:vendors).find(params[:id])
+  end
 end

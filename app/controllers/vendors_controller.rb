@@ -13,4 +13,8 @@ class VendorsController < ApplicationController
     # Sort the vendors using the column and direction
     @vendors = Vendor.order(sort_by + ' ' + sort_dir)
   end
+
+  def show
+    @vendor = Vendor.includes(:accounts).find(params[:id])
+  end
 end

@@ -3,15 +3,15 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to 'Test', vendors_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
-      <th><%= link_to 'Vendor Name', vendors_index_path(sort: 'vendor_name', direction: toggle_direction('vendor_name')) %></th>
+      <th><%= link_to 'Test', vendors_path(sort: 'id', direction: toggle_direction('id')) %></th>
+      <th><%= link_to 'Vendor Name', vendors_path(sort: 'vendor_name', direction: toggle_direction('vendor_name')) %></th>
     </tr>
   </thead>
   <tbody>
     <% @vendors.each do |vendor| %>
       <tr>
         <td><%= vendor.id %></td>
-        <td><%= vendor.vendor_name %></td>
+        <td><%= link_to vendor.vendor_name, vendor_path(vendor) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get "about/index"
-  get "accounts/index"
+  resources :accounts, only: [:index, :show]
   resources :expenses, only: [:index, :show]
-  get "vendors/index"
+  resources :vendors, only: [:index, :show]
   get "wards/index"
   get "main/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

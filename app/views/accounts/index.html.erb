@@ -3,15 +3,15 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to 'ID', accounts_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
-      <th><%= link_to 'Account Name', accounts_index_path(sort: 'account_name', direction: toggle_direction('account_name')) %></th>
+      <th><%= link_to 'ID', accounts_path(sort: 'id', direction: toggle_direction('id')) %></th>
+      <th><%= link_to 'Account Name', accounts_path(sort: 'account_name', direction: toggle_direction('account_name')) %></th>
     </tr>
   </thead>
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.id %></td>
-        <td><%= account.account_name %></td>
+        <td><%= link_to account.account_name, account_path(account) %></td>
       </tr>
     <% end %>
   </tbody>
