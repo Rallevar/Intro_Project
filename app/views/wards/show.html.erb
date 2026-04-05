@@ -1,0 +1,20 @@
+<h1><%= @ward.ward_name %></h1>
+
+<ul>
+  <li><strong>Council Member:</strong> <%= @ward.council_member %></li>
+  <li><strong>Total Population:</strong> <%= @ward.total_population %></li>
+  <li><strong>Median Age:</strong> <%= @ward.median_age %></li>
+</ul>
+
+<h2>Vendors Used by This Ward</h2>
+<% if @ward.vendors.any? %>
+  <ul>
+    <% @ward.vendors.distinct.each do |vendor| %>
+      <li><%= link_to vendor.vendor_name, vendor_path(vendor) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No vendors found for this ward.</p>
+<% end %>
+
+<%= link_to 'Back to Wards', wards_path %>

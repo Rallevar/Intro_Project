@@ -3,10 +3,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to 'ID', wards_index_path(sort: 'id', direction: toggle_direction('id')) %></th>
-      <th><%= link_to 'Ward Name', wards_index_path(sort: 'ward_name', direction: toggle_direction('ward_name')) %></th>
-      <th><%= link_to 'Median Age', wards_index_path(sort: 'median_age', direction: toggle_direction('median_age')) %></th>
-      <th><%= link_to 'Total Population', wards_index_path(sort: 'total_population', direction: toggle_direction('total_population')) %></th>
+      <th><%= link_to 'ID', wards_path(sort: 'id', direction: toggle_direction('id')) %></th>
+      <th><%= link_to 'Ward Name', wards_path(sort: 'ward_name', direction: toggle_direction('ward_name')) %></th>
+      <th><%= link_to 'Median Age', wards_path(sort: 'median_age', direction: toggle_direction('median_age')) %></th>
+      <th><%= link_to 'Total Population', wards_path(sort: 'total_population', direction: toggle_direction('total_population')) %></th>
       <th>Population Tier</th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
     <% @wards.each do |ward| %>
       <tr>
         <td><%= ward.id %></td>
-        <td><%= ward.ward_name %></td>
+        <td><%= link_to ward.ward_name, ward_path(ward) %></td>
         <td><%= ward.median_age %></td>
         <td><%= ward.total_population %></td>
         <td>

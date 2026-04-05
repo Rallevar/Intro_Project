@@ -14,4 +14,8 @@ class WardsController < ApplicationController
     # Sort the wards using the column and direction
     @wards = Ward.order(sort_by + ' ' + sort_dir)
   end
+
+  def show
+    @ward = Ward.includes(:vendors).find(params[:id])
+  end
 end

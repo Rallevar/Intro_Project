@@ -1,5 +1,6 @@
 class Ward < ApplicationRecord
    has_many :expenses
+   has_many :vendors, through: :expenses
 
    # Validations
   validates :ward_name, presence: true

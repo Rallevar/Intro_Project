@@ -11,4 +11,15 @@
   <p>No accounts found for this vendor.</p>
 <% end %>
 
+<h2>Wards That Have Used This Vendor</h2>
+<% if @vendor.wards.any? %>
+  <ul>
+    <% @vendor.wards.distinct.each do |ward| %>
+      <li><%= link_to ward.ward_name, ward_path(ward) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No wards found for this vendor.</p>
+<% end %>
+
 <%= link_to 'Back to Vendors', vendors_path %>

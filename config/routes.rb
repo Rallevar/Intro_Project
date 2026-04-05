@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index, :show]
   resources :expenses, only: [:index, :show]
   resources :vendors, only: [:index, :show]
-  get "wards/index"
+  resources :wards, only: [:index, :show]
   get "main/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
