@@ -23,6 +23,7 @@ class VendorsController < ApplicationController
   end
 
   def show
+    # Find the vendor by its ID from the URL, and load its associated accounts
     @vendor = Vendor.includes(:accounts).find(params[:id])
   end
 end

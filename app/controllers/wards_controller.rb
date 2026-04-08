@@ -24,6 +24,7 @@ class WardsController < ApplicationController
   end
 
   def show
+    # Find the ward by its ID from the URL, and load its associated vendors
     @ward = Ward.includes(:vendors).find(params[:id])
   end
 end

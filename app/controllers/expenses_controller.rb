@@ -31,6 +31,7 @@ class ExpensesController < ApplicationController
   end
 
   def show
+    # Find the expense by its ID from the URL, and load its associated ward, vendor, and account
     @expense = Expense.includes(:ward, :vendor, :account).find(params[:id])
   end
 end
