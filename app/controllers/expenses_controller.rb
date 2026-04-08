@@ -11,8 +11,11 @@ class ExpensesController < ApplicationController
     sort_dir = 'asc'
     end
 
+    # Filter by expense ID if a search was submitted
+    expenses = params[:id].present? ? Expense.where(id: params[:id].to_i) : Expense.all
+
     # Sort the expenses using the column and direction
-    @expenses = Expense.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
+    @expenses = expenses.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
   end
 
   def show
