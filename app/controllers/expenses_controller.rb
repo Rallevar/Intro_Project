@@ -12,7 +12,11 @@ class ExpensesController < ApplicationController
     end
 
     # Filter by expense ID if a search was submitted
-    expenses = params[:id].present? ? Expense.where(id: params[:id].to_i) : Expense.all
+    if params[:id].present?
+      expenses = Expense.where(id: params[:id].to_i)
+    else
+      expenses = Expense.all
+    end
 
     # Sort the expenses using the column and direction
     @expenses = expenses.order(sort_by + ' ' + sort_dir).page(params[:page]).per(25)
