@@ -1,3 +1,11 @@
+=begin
+  Name: Nathan Keenan
+  Program: Business Information Technology
+  Course: WEBD-3011 (277098)
+  Created: 2026-04-06
+  Updated: 2024-04-08
+=end
+
 Rails.application.routes.draw do
   get "about/index"
   resources :accounts, only: [:index, :show]
